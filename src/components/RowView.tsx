@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import {
+    AnimatableNumericValue,
     DimensionValue,
     StyleSheet,
     TextInput,
@@ -7,33 +8,14 @@ import {
   } from 'react-native';
 
 import { useTheme  } from '../theme/ThemeContext';
-import { GHITextInputProps } from '../PropsModel/GHIInputProps';
-import { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
+import { RCViewProps } from '../PropsModel/RCViewProps';
 
-interface RowViewProps {
-    children: ReactNode;
-    justifyContent?: 'center' | 'flex-end' | 'flex-start' | 'space-between' | 'space-evenly' | 'space-around';
-    alignItem?: 'center' | 'baseline' | 'flex-end' | 'flex-start' | 'stretch';
-    marginTop?: DimensionValue;
-    marginBottom?: DimensionValue;
-    marginLeft?: DimensionValue;
-    marginRight?: DimensionValue;
-    margin?: DimensionValue;
-    marginHorizontal?: DimensionValue;
-    marginVertical?: DimensionValue;
-    padding?: DimensionValue;
-    paddingTop?: DimensionValue;
-    paddingBottom?: DimensionValue;
-    paddingLeft?: DimensionValue;
-    paddingRight?: DimensionValue;
-    paddingHorizontal?: DimensionValue;
-    paddingVertical?: DimensionValue;
-}
-
-export const RowView: FC<RowViewProps> = ({ 
+export const RowView: FC<RCViewProps> = ({ 
                                             children, 
                                             justifyContent, 
                                             alignItem, 
+                                            width,
+                                            height,
                                             marginTop, 
                                             marginBottom, 
                                             marginLeft,
@@ -47,13 +29,19 @@ export const RowView: FC<RowViewProps> = ({
                                             paddingTop, 
                                             paddingLeft, 
                                             paddingHorizontal, 
-                                            paddingVertical}) => {
+                                            paddingVertical, backgroundColor, borderRadius, gap, borderWidth}) => {
     const theme = useTheme();
     return (
         <View style={[styles.body, 
             { 
                 justifyContent: justifyContent, 
                 alignItems: alignItem,
+                width: width,
+                height: height,
+                backgroundColor: backgroundColor,
+                borderWidth: borderWidth,
+                borderRadius: borderRadius,
+                gap: gap,
                 marginTop: marginTop,
                 marginBottom: marginBottom,
                 marginLeft: marginLeft,
