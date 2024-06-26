@@ -9,17 +9,16 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from './theme/ThemeContext';
-import { Store } from './redux/store';
 
 // Async storage and redux
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setDarkLightMode, setUsername } from './redux/actions';
+import { setDarkLightMode } from './redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Screens
 import MainScreen from './screens/main';
-import { Text, View } from 'react-native';
-import LandingScreen from './screens/landing';
+import LoginScreen from './screens/login';
+import ForgotScreen from './screens/forgot';
 
 
 
@@ -48,7 +47,7 @@ const NavigatorManager = () => {
   return (
     <ThemeProvider theme={dlmode}>
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Landing'>
+            <Stack.Navigator initialRouteName='Login'>
                 <Stack.Screen 
                 name="Main" 
                 component={MainScreen}
@@ -59,8 +58,17 @@ const NavigatorManager = () => {
                 />
                 
                 <Stack.Screen 
-                name="Landing" 
-                component={LandingScreen}
+                name="Login" 
+                component={LoginScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+
+                <Stack.Screen 
+                name="Forgot" 
+                component={ForgotScreen}
                 options={
                     
                     { headerShown: false }
