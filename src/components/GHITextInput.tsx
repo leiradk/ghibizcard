@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'Manrope-Medium',
         borderRadius: 10, 
-        marginVertical: 10, padding: 12
+        marginVertical: 10, padding: 12,
+        backgroundColor: '#f0f0f0'
     },
 });
