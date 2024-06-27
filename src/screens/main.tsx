@@ -1,12 +1,66 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { RowView } from '../components/RowView';
+import { CircleView } from '../components/CircleView';
+import { useTheme } from '../theme/ThemeContext';
+import { ColumnView } from '../components/ColumnView';
+import { CreditCard, Home, User} from 'iconoir-react-native';
+import HomeScreen from './tabs/home';
+import ContactScreen from './tabs/contacts';
 
 const MainScreen = () => {
+    const theme = useTheme();
+    const [tabIndex, setTabIndex] = useState(0);
   return (
-    <View>
-        <Text style={{fontSize: 20, color: '#000'}}>Main App</Text>
+    <View style={styles.body}>
+        { tabIndex === 0 &&(
+            <HomeScreen />
+        )}
+        { tabIndex === 1 &&(
+            <ContactScreen />
+        )}
+        { tabIndex === 2 &&(
+            <Text>Send Card</Text>
+        )}
+        <View style={{width: '100%',position: 'absolute', bottom: 0, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', paddingVertical: 5}}>
+           <RowView justifyContent='space-evenly' width={'100%'}>
+                <TouchableOpacity
+                        onPress={() => setTabIndex(0)}
+                    >
+                    <ColumnView alignItem='center'>
+                        <Home color={theme.primaryDark} width={20} height={20} />
+                        <Text style={{fontSize: 10, fontFamily: tabIndex === 0 ?  'Manrope-Bold': 'Manrope-Regular'}}>Home</Text>
+                    </ColumnView>
+                </TouchableOpacity>
+                <TouchableOpacity
+                        onPress={() => setTabIndex(1)}
+                    >
+                    <ColumnView alignItem='center'>
+                        <User color={theme.primaryDark} width={20} height={20} />
+                        <Text style={{fontSize: 10, fontFamily: tabIndex === 1 ?  'Manrope-Bold': 'Manrope-Regular'}}>Contacts</Text>
+                    </ColumnView>
+                </TouchableOpacity>
+                <TouchableOpacity
+                        onPress={() => setTabIndex(2)}
+                    >
+                    <ColumnView alignItem='center'>
+                        <CreditCard color={theme.primaryDark} width={20} height={20} />
+                        <Text style={{fontSize: 10, fontFamily: tabIndex === 2 ?  'Manrope-Bold': 'Manrope-Regular'}}>Send Card</Text>
+                    </ColumnView>
+                </TouchableOpacity>
+            </RowView>
+        </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    body: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+    },
+});
 
 export default MainScreen;
