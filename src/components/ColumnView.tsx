@@ -55,7 +55,7 @@ export const ColumnView: FC<RCViewProps> = ({
             paddingRight: paddingRight,
             paddingHorizontal: paddingHorizontal,
             paddingVertical: paddingVertical,
-        }]}>
+        },]}>
             {children}
         </View>
     );

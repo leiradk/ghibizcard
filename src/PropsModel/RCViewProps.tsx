@@ -23,6 +23,6 @@ export interface RCViewProps {
     paddingVertical?: DimensionValue;
     backgroundColor?: string;
     borderRadius?: AnimatableNumericValue;
-    gap?: number;
+      gap?: number;
     borderWidth?: number;
 }
