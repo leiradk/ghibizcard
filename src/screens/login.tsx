@@ -58,7 +58,9 @@ const LoginScreen = () => {
             <Text style={{fontSize: 16, fontFamily: 'Manrope-Regular' ,color: '#fff'}}>Remember me</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={{marginTop: 50, width: '100%'}}>
+        <TouchableOpacity style={{marginTop: 50, width: '100%'}}
+                onPress={() => navigation.navigate('Main')}
+            >
             <View style={{height: 50, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', borderRadius: 5}}>
                 <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold' ,color: '#000'}}>Login</Text>
             </View>

@@ -19,7 +19,11 @@ const ForgotScreen = () => {
   return (
     <View style={[styles.body, { backgroundColor: '#fff' }]}>
         <View style={{justifyContent: 'center', marginVertical: 21}}>
-            <NavArrowLeft color={theme.primaryDark} width={25} height={25} />
+            <TouchableOpacity
+                    onPress={ () => navigation.goBack()}
+                >
+                <NavArrowLeft color={theme.primaryDark} width={25} height={25} />
+            </TouchableOpacity>
             <Text style={{fontSize: 20, fontFamily: 'Manrope-Bold' , color: theme.primaryDark, marginTop: 15}}>Forgot Password</Text>
         </View>
 
