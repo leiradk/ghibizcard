@@ -15,7 +15,7 @@ export const GHITextInput: FC<GHITextInputProps> = ({ placeholder,
                                                       onFocus , 
                                                       bdColor={borderColor: '#224C12'}, 
                                                       borderW = 1, 
-                                                      valueData, keyboardType='default'}) => {
+                                                      valueData, keyboardType='default',multiline=false, numberOfLines=1}) => {
     const theme = useTheme();
     return (
         <TextInput
@@ -28,6 +28,8 @@ export const GHITextInput: FC<GHITextInputProps> = ({ placeholder,
                 onEndEditing={onEndEditing}
                 onFocus={onFocus}
                 keyboardType={keyboardType}
+                multiline={multiline}
+                numberOfLines={numberOfLines}
             >
         </TextInput>
     );

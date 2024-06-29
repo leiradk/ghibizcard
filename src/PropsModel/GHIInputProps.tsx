@@ -11,4 +11,6 @@ export interface GHITextInputProps {
     borderW?: number;
     valueData?: string;
     keyboardType?: 'email-address' | 'number-pad' | 'phone-pad' | 'default';
+    multiline?: boolean | undefined;
+    numberOfLines?: number | undefined
 }
