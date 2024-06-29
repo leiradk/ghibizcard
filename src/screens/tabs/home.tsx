@@ -4,10 +4,12 @@ import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
-import { Box3dPoint, Menu, MoreHorizCircle, Play, Star, Trophy, XmarkCircle } from 'iconoir-react-native';
+import { BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
     const theme = useTheme();
+    const navigation = useNavigation();
   return (
     <View style={styles.body}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -28,7 +30,9 @@ const HomeScreen = () => {
                             </RowView>
                         </ColumnView>
                     </RowView>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                            onPress={() => navigation.navigate('Profile')}
+                        >
                         <Menu color={theme.primaryDark} width={30} height={30}  />
                     </TouchableOpacity>
                 </RowView>
@@ -40,7 +44,7 @@ const HomeScreen = () => {
                             <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15}>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Play color={'#fff'} width={30} height={30}  />
+                                        <MediaVideoList color={'#fff'} width={30} height={30}  />
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
                                 </ColumnView>
@@ -52,9 +56,21 @@ const HomeScreen = () => {
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Box3dPoint color={'#fff'} width={30} height={30}  />
+                                        <Calendar color={'#fff'} width={30} height={30}  />
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Products</Text>
+                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
+                                </ColumnView>
+                                <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
+                                    <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
+                                        <BookStack color={'#fff'} width={30} height={30}  />
+                                    </ColumnView>
+                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Manage Campaign</Text>
+                                </ColumnView>
+                                <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
+                                    <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
+                                        <UserCrown color={'#fff'} width={30} height={30}  />
+                                    </ColumnView>
+                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>ID Badge</Text>
                                 </ColumnView>
                             </RowView>
                             <View style={{width: 10}}></View>
@@ -153,13 +169,93 @@ const HomeScreen = () => {
                     </View>
                     {/* end of New Contacts */}
 
+                    {/* Champions */}
+                    <View>
+                        <RowView alignItem='center' justifyContent='space-between' paddingHorizontal={21} marginTop={15}>
+                            <Text style={{fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Champions</Text>
+                            <TouchableOpacity  style={{position: 'relative', zIndex: 2}}
+                                    onPress={() => navigation.navigate('AllReviews')}
+                                >
+                                <RowView alignItem='center' gap={10}>
+                                    <Text>See All Champions</Text>
+                                </RowView>
+                            </TouchableOpacity>
+                        </RowView>
+                        <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+                            <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={10}>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Weekly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>15</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Monthly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>25</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Yearly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>40</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                            </RowView>
+                            <View style={{width: 10}}></View>
+                        </ScrollView>
+                    </View>
+                    {/* end Champions */}
+
+                    {/* Referrals */}
+                    <View>
+                        <RowView alignItem='center' justifyContent='space-between' paddingHorizontal={21} marginTop={15}>
+                            <Text style={{fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Referrals</Text>
+                            <TouchableOpacity  style={{position: 'relative', zIndex: 2}}
+                                    onPress={() => navigation.navigate('AllReviews')}
+                                >
+                                <RowView alignItem='center' gap={10}>
+                                    <Text>See All Referrals</Text>
+                                </RowView>
+                            </TouchableOpacity>
+                        </RowView>
+                        <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+                            <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={10}>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Weekly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>15</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Monthly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>25</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Yearly</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>40</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                            </RowView>
+                            <View style={{width: 10}}></View>
+                        </ScrollView>
+                    </View>
+                    {/* end Referrals */}
+
                     {/* See All Reviews */}
                     <View>
                         <RowView alignItem='center' justifyContent='space-between' paddingHorizontal={21} marginTop={15}>
                             <Text style={{fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Reviews</Text>
-                            <RowView alignItem='center' gap={10}>
-                                <Text>See All Reviews</Text>
-                            </RowView>
+                            <TouchableOpacity  style={{position: 'relative', zIndex: 2}}
+                                    onPress={() => navigation.navigate('AllReviews')}
+                                >
+                                <RowView alignItem='center' gap={10}>
+                                    <Text>See All Reviews</Text>
+                                </RowView>
+                            </TouchableOpacity>
                         </RowView>
                         <ScrollView showsHorizontalScrollIndicator={false} horizontal>
                             <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={10}>
