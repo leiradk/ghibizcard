@@ -4,9 +4,11 @@ import { RowView } from '../components/RowView';
 import { CircleView } from '../components/CircleView';
 import { useTheme } from '../theme/ThemeContext';
 import { ColumnView } from '../components/ColumnView';
-import { CreditCard, Home, User} from 'iconoir-react-native';
+import { CreditCard, Home, NetworkRight, User} from 'iconoir-react-native';
 import HomeScreen from './tabs/home';
 import ContactScreen from './tabs/contacts';
+import SendCardScreen from './tabs/sendCard';
+import RecruitScreen from './tabs/recruit';
 
 const MainScreen = () => {
     const theme = useTheme();
@@ -20,7 +22,10 @@ const MainScreen = () => {
             <ContactScreen />
         )}
         { tabIndex === 2 &&(
-            <Text>Send Card</Text>
+            <SendCardScreen />
+        )}
+        { tabIndex === 3 &&(
+           <RecruitScreen />
         )}
         <View style={{width: '100%',position: 'absolute', bottom: 0, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', paddingVertical: 5}}>
            <RowView justifyContent='space-evenly' width={'100%'}>
@@ -46,6 +51,14 @@ const MainScreen = () => {
                     <ColumnView alignItem='center'>
                         <CreditCard color={theme.primaryDark} width={20} height={20} />
                         <Text style={{fontSize: 10, fontFamily: tabIndex === 2 ?  'Manrope-Bold': 'Manrope-Regular'}}>Send Card</Text>
+                    </ColumnView>
+                </TouchableOpacity>
+                <TouchableOpacity
+                        onPress={() => setTabIndex(3)}
+                    >
+                    <ColumnView alignItem='center'>
+                        <NetworkRight color={theme.primaryDark} width={20} height={20} />
+                        <Text style={{fontSize: 10, fontFamily: tabIndex === 2 ?  'Manrope-Bold': 'Manrope-Regular'}}>Recruit</Text>
                     </ColumnView>
                 </TouchableOpacity>
             </RowView>
