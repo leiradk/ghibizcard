@@ -19,6 +19,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import MainScreen from './screens/main';
 import LoginScreen from './screens/login';
 import ForgotScreen from './screens/forgot';
+import AllReviewsScreen from './screens/reviews/allReviews';
+import ProfileScreen from './screens/profile';
 
 
 
@@ -69,6 +71,22 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="Forgot" 
                 component={ForgotScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="AllReviews" 
+                component={AllReviewsScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="Profile" 
+                component={ProfileScreen}
                 options={
                     
                     { headerShown: false }
