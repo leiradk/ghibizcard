@@ -4,7 +4,7 @@ import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
-import { BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
+import { AppNotification, BellNotification, BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
@@ -20,7 +20,7 @@ const HomeScreen = () => {
                             <Text style={{color: '#fff'}}>AD</Text>
                         </CircleView>
                         <ColumnView marginLeft={10}>
-                            <Text style={{fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Ariel Delos Santos</Text>
+                            <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Ariel Delos Santos</Text>
                             <RowView alignItem='center'>
                                 <RowView alignItem='center' marginRight={5}>
                                     <Star color={theme.primaryDark} width={14} height={14} />
@@ -33,7 +33,12 @@ const HomeScreen = () => {
                     <TouchableOpacity
                             onPress={() => navigation.navigate('Profile')}
                         >
-                        <Menu color={theme.primaryDark} width={30} height={30}  />
+                        <BellNotification color={theme.primaryDark} width={25} height={25}  />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                            onPress={() => navigation.navigate('Profile')}
+                        >
+                        <Menu color={theme.primaryDark} width={25} height={25}  />
                     </TouchableOpacity>
                 </RowView>
                 <ColumnView>
