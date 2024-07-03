@@ -5,10 +5,13 @@ import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
 import { GHITextInput } from '../../components/GHITextInput';
-import { InputSearch, ListSelect, Message, Phone } from 'iconoir-react-native';
+
+import { InputSearch, ListSelect, Message, MoreVert, Phone } from 'iconoir-react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ContactScreen = () => {
     const theme = useTheme();
+    const navigation = useNavigation();
     const [tabIndex, setTabIndex] = useState(0);
     const [isSearch, setIsSearch] = useState(false);
   return (
@@ -63,7 +66,19 @@ const ContactScreen = () => {
             { tabIndex === 0 &&(
                 <View>
                     <ScrollView>
-                        <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
+                        <TouchableOpacity style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}
+                                onPress={ () => {
+                                    // const { name, phone, email, contactType } = route.params
+                                    navigation.navigate('ContactDetails', { 
+                                                                            name: 'Brayan',
+                                                                            lastname: 'Wilder', 
+                                                                            phone: '+63912345678',
+                                                                            email: 'bryan@mail.com', 
+                                                                            contactType: 'Lead', 
+                                                                            createdAt: 'June 30, 2024', 
+                                                                            status: 'Signed'})
+                                }}
+                            >
                             <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
                                 <RowView gap={10}>
                                     <CircleView diameter={50} backgroundColor={'#2222'}>
@@ -71,15 +86,16 @@ const ContactScreen = () => {
                                     </CircleView>
                                     <ColumnView>
                                         <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>Bryan Label</Text>
-                                        <Text>(+63)92 123 4567</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 30, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
                                     </ColumnView>
                                 </RowView>
-                                <RowView gap={15}>
-                                    <Phone color={theme.primaryDark} width={20} height={20} />
-                                    <Message color={theme.primaryDark} width={20} height={20} />
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color: 'green'}}>Signed</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
                                 </RowView>
                             </RowView>
-                        </View>
+                        </TouchableOpacity>
                         <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
                             <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
                                 <RowView gap={10}>
@@ -88,12 +104,13 @@ const ContactScreen = () => {
                                     </CircleView>
                                     <ColumnView>
                                         <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>Kaarlo Morgan</Text>
-                                        <Text>(+63)92 123 4567</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 29, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
                                     </ColumnView>
                                 </RowView>
-                                <RowView gap={15}>
-                                    <Phone color={theme.primaryDark} width={20} height={20} />
-                                    <Message color={theme.primaryDark} width={20} height={20} />
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color: 'red'}}>Need Docs</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
                                 </RowView>
                             </RowView>
                         </View>
@@ -105,12 +122,87 @@ const ContactScreen = () => {
                                     </CircleView>
                                     <ColumnView>
                                         <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>John Whiskey</Text>
-                                        <Text>(+63)92 123 4567</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 28, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
                                     </ColumnView> 
                                 </RowView>
-                                <RowView gap={15}>
-                                    <Phone color={theme.primaryDark} width={20} height={20} />
-                                    <Message color={theme.primaryDark} width={20} height={20} />
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color:'blue'}}>Contacted</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
+                                </RowView>
+                            </RowView>
+                        </View>
+
+                        <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
+                            <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
+                                <RowView gap={10}>
+                                    <CircleView diameter={50} backgroundColor={'#2222'}>
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold'}}>WJ</Text>
+                                    </CircleView>
+                                    <ColumnView>
+                                        <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>Wille James</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 28, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
+                                    </ColumnView> 
+                                </RowView>
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color:'green'}}>Onboarding</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
+                                </RowView>
+                            </RowView>
+                        </View>
+
+                        <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
+                            <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
+                                <RowView gap={10}>
+                                    <CircleView diameter={50} backgroundColor={'#2222'}>
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold'}}>CY</Text>
+                                    </CircleView>
+                                    <ColumnView>
+                                        <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>Carl Yap</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 28, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
+                                    </ColumnView> 
+                                </RowView>
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color:'violet'}}>Verbal Commit</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
+                                </RowView>
+                            </RowView>
+                        </View>
+                        <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
+                            <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
+                                <RowView gap={10}>
+                                    <CircleView diameter={50} backgroundColor={'#2222'}>
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold'}}>FS</Text>
+                                    </CircleView>
+                                    <ColumnView>
+                                        <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>Flora Smith</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 28, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
+                                    </ColumnView> 
+                                </RowView>
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color:'green'}}>Selling</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
+                                </RowView>
+                            </RowView>
+                        </View>
+                        <View style={{borderBottomWidth: 1, borderBottomColor: '#66666650'}}>
+                            <RowView paddingHorizontal={21} paddingVertical={10} alignItem='center' justifyContent='space-between' gap={10}>
+                                <RowView gap={10}>
+                                    <CircleView diameter={50} backgroundColor={'#2222'}>
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold'}}>JY</Text>
+                                    </CircleView>
+                                    <ColumnView>
+                                        <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold'}}>James Yap</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Created at: June 28, 2024</Text>
+                                        <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold'}}>Lead</Text>
+                                    </ColumnView> 
+                                </RowView>
+                                <RowView gap={15} alignItem='center'>
+                                    <Text style={{fontSize: 10, fontFamily: 'Manrope-Bold', color:'blue'}}>Prospect</Text>
+                                    <MoreVert color={theme.primaryDark} width={30} height={30} />
                                 </RowView>
                             </RowView>
                         </View>
