@@ -6,6 +6,7 @@ import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
 import { AppNotification, BellNotification, BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Iconify } from 'react-native-iconify';
 
 const HomeScreen = () => {
     const theme = useTheme();
@@ -33,7 +34,7 @@ const HomeScreen = () => {
                     <TouchableOpacity
                             onPress={() => navigation.navigate('Profile')}
                         >
-                        <BellNotification color={theme.primaryDark} width={25} height={25}  />
+                        <Iconify icon='lets-icons:bell-pin' size={25} color={theme.primaryDark}/>
                     </TouchableOpacity>
                     <TouchableOpacity
                             onPress={() => navigation.navigate('Profile')}
@@ -49,31 +50,36 @@ const HomeScreen = () => {
                             <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15}>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <MediaVideoList color={'#fff'} width={30} height={30}  />
+                                        <Iconify icon='tdesign:play-demo' size={30} color={'#fff'}/>
+                                        {/* <MediaVideoList color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Trophy color={'#fff'} width={30} height={30}  />
+                                        <Iconify icon='bi:trophy' size={30} color={'#fff'}/>
+                                        {/* <Trophy color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Calendar color={'#fff'} width={30} height={30}  />
+                                        <Iconify icon='carbon:calendar' size={30} color={'#fff'}/>
+                                        {/* <Calendar color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <BookStack color={'#fff'} width={30} height={30}  />
+                                        <Iconify icon='fluent-mdl2:task-manager-mirrored' size={30} color={'#fff'}/>  
+                                        {/* <BookStack color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Manage Campaign</Text>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <UserCrown color={'#fff'} width={30} height={30}  />
+                                        <Iconify icon='clarity:id-badge-line' size={30} color={'#fff'}/>  
+                                        {/* <UserCrown color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>ID Badge</Text>
                                 </ColumnView>

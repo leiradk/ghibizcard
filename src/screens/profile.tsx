@@ -9,6 +9,7 @@ import { GHITextInput } from '../components/GHITextInput';
 import YouTube from 'react-native-youtube-iframe';
 import { useNavigation } from '@react-navigation/native';
 import { SelectList } from 'react-native-dropdown-select-list';
+import { Iconify } from 'react-native-iconify';
 
 const { width: screenWidth } = Dimensions.get('window');
 const data = [
@@ -99,7 +100,8 @@ const ProfileScreen = () => {
                         <RowView alignItem='center' gap={10}>
                             <TextInput value={'Ariel'} style={{fontSize: 20, fontFamily: 'Manrope-Bold', height: 46}} />
                             <TouchableOpacity>
-                                <Edit color={'#fff'} width={20} height={20} />
+                                {/* <Edit color={'#fff'} width={20} height={20} /> */}
+                                <Iconify icon='tabler:edit' size={20} color={'#fff'} />
                             </TouchableOpacity>
                         </RowView>
                         <Text style={{fontSize: 12, fontFamily: 'Manrope-Regular'}}>Created: June 30, 2024</Text>
@@ -107,7 +109,8 @@ const ProfileScreen = () => {
                 </RowView>
                 <TouchableOpacity>
                     <ColumnView width={50} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
-                        <FloppyDisk color={theme.primaryDark} width={20} height={20} />
+                        {/* <FloppyDisk color={theme.primaryDark} width={20} height={20} /> */}
+                        <Iconify icon='mynaui:save' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Save</Text>
                     </ColumnView>
                 </TouchableOpacity>
@@ -116,26 +119,30 @@ const ProfileScreen = () => {
             <RowView gap={10} marginTop={15} justifyContent='center'>
                <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
-                        <Calendar color={theme.primaryDark} width={20} height={20} />
+                        {/* <Calendar color={theme.primaryDark} width={20} height={20} /> */}
+                        <Iconify icon='carbon:calendar' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Appt</Text>
                     </ColumnView>
                 </TouchableOpacity> 
 
                 <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
-                        <MediaImage color={theme.primaryDark} width={20} height={20} />
+                        {/* <MediaImage color={theme.primaryDark} width={20} height={20} /> */}
+                        <Iconify icon='ph:image-light' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Attach</Text>
                     </ColumnView>
                 </TouchableOpacity> 
                 <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
-                        <CreditCard color={theme.primaryDark} width={20} height={20} />
+                        {/* <CreditCard color={theme.primaryDark} width={20} height={20} /> */}
+                        <Iconify icon='fluent:contact-card-48-regular' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Send Card</Text>
                     </ColumnView>
                 </TouchableOpacity> 
                 <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
-                        <DownloadCircle color={theme.primaryDark} width={20} height={20} />
+                        {/* <DownloadCircle color={theme.primaryDark} width={20} height={20} /> */}
+                        <Iconify icon='radix-icons:download' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Champion</Text>
                     </ColumnView>
                 </TouchableOpacity> 

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import { Animated, Dimensions, Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Animated, Dimensions, Image, Linking, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
@@ -16,6 +16,9 @@ const SendCardScreen = () => {
     const [sendVia, setSendVia] = useState('Text');
     const [includeSocialMedia , setIncludeSocialMedia] = useState(false);
     const [includeChampionApp , setIncludeChampionApp] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [initialMessage, setInitialMessage] = useState('');
 
     const scrollX = useRef(new Animated.Value(0)).current;
     // Overview Property
@@ -46,6 +49,31 @@ const SendCardScreen = () => {
         ytid: 'DzO2SBzMmOw',
     },
     ];
+
+    const handleSendVia = () => {
+        if (sendVia === 'Text') {
+            console.log('Send via Text');
+            if (phoneNumber) {
+                console.log('has number');
+                const urlLinkPhone = `sms:${phoneNumber}?body=${encodeURIComponent(initialMessage)}`;
+                Linking.openURL(urlLinkPhone)
+                    .catch((err) => console.error('An error occurred', err));
+            } else {
+                // throw error
+                console.log('Has no number');
+            }
+        }
+        if (sendVia === 'Email') {
+            const recipient = email; // Replace with the desired recipient email
+            const subject = 'GHI+BizCard'; // Replace with your email subject
+            const body = initialMessage; // Replace with your email body
+
+            const url = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            Linking.openURL(url)
+                .catch((err) => console.error('An error occurred', err));
+        }
+    }
   return (
     <View style={[styles.body, {backgroundColor: theme.primary}]}>
         <ColumnView alignItem='center' paddingVertical={15}>
@@ -87,13 +115,13 @@ const SendCardScreen = () => {
 
                         <GHITextInput 
                             placeholder={'Phone'} 
-                            onChangeText={() => {}} 
+                            onChangeText={(value) => setPhoneNumber(value)} 
                             keyboardType='phone-pad'
                             />
 
                         <GHITextInput 
                             placeholder={'Email'}  
-                            onChangeText={() => {}}
+                            onChangeText={(value) => setEmail(value)}
                             keyboardType='email-address'
                              />
 
@@ -122,6 +150,7 @@ const SendCardScreen = () => {
                             numberOfLines={6}
                             textAlignVertical='top'
                             style={{borderWidth: 0.5, borderRadius: 5, padding: 10}}
+                            onChangeText={(value) => setInitialMessage(value)}
                         />
 
                         <RowView alignItem='center' justifyContent='space-between' marginVertical={15}>
@@ -256,7 +285,9 @@ const SendCardScreen = () => {
                             </RowView>
                         </ColumnView>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                                onPress={() => handleSendVia()}
+                            >
                             <RowView gap={10} height={46} justifyContent='center' alignItem='center' backgroundColor={theme.primary} borderRadius={5} marginTop={15}>
                                 <SendDiagonal color={'#fff'} width={20} height={20}/>
                                 <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold', color: '#fff'}}>Send Card</Text>
