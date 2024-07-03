@@ -21,6 +21,7 @@ import LoginScreen from './screens/login';
 import ForgotScreen from './screens/forgot';
 import AllReviewsScreen from './screens/reviews/allReviews';
 import ProfileScreen from './screens/profile';
+import ContactDetailsScreen from './screens/ContactDetails';
 
 
 
@@ -87,6 +88,14 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="Profile" 
                 component={ProfileScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="ContactDetails" 
+                component={ContactDetailsScreen}
                 options={
                     
                     { headerShown: false }
