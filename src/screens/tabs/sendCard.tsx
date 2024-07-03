@@ -15,6 +15,7 @@ const SendCardScreen = () => {
     const [sendTo, setSendTo] = useState('Lead');
     const [sendVia, setSendVia] = useState('Text');
     const [includeSocialMedia , setIncludeSocialMedia] = useState(false);
+    const [includeChampionApp , setIncludeChampionApp] = useState(false);
 
     const scrollX = useRef(new Animated.Value(0)).current;
     // Overview Property
@@ -118,7 +119,7 @@ const SendCardScreen = () => {
                         <TextInput
                             placeholder='Type something'
                             multiline={true}
-                            numberOfLines={4}
+                            numberOfLines={6}
                             textAlignVertical='top'
                             style={{borderWidth: 0.5, borderRadius: 5, padding: 10}}
                         />
@@ -142,10 +143,10 @@ const SendCardScreen = () => {
                             </Text>
                             <Switch
                                 trackColor={{ false: '#767577', true: theme.primaryLight }}
-                                thumbColor={includeSocialMedia ? theme.primary : '#f4f3f4'}
+                                thumbColor={includeChampionApp ? theme.primary : '#f4f3f4'}
                                 ios_backgroundColor="#3e3e3e"
-                                onValueChange={() => setIncludeSocialMedia(!includeSocialMedia)}
-                                value={includeSocialMedia}
+                                onValueChange={() => setIncludeChampionApp(!includeChampionApp)}
+                                value={includeChampionApp}
                             />
                         </RowView>
 
@@ -191,6 +192,36 @@ const SendCardScreen = () => {
                                     
                                 </Animated.ScrollView> */}
                             </RowView>
+                            </ScrollView>
+                        </ColumnView>
+                        <ColumnView>
+                            <RowView justifyContent='space-between'>
+                                <Text>Custom Call To Action</Text>
+                                <Text>Add</Text>
+                            </RowView>
+                            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                                <RowView paddingVertical={15} gap={15}>
+                                    <TouchableOpacity 
+                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                        >
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Download Champion App</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity 
+                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                        >
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Download GHI+BizCard App</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity 
+                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                        >
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Apply Today!</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity 
+                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                        >
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Submit Documents</Text>
+                                    </TouchableOpacity>
+                                </RowView>
                             </ScrollView>
                         </ColumnView>
 

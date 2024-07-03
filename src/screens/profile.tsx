@@ -113,7 +113,7 @@ const ProfileScreen = () => {
                 </TouchableOpacity>
             </RowView>
 
-            <RowView gap={10} marginTop={15}>
+            <RowView gap={10} marginTop={15} justifyContent='center'>
                <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
                         <Calendar color={theme.primaryDark} width={20} height={20} />
@@ -154,7 +154,7 @@ const ProfileScreen = () => {
                         />
                 </ColumnView>
                 <ColumnView padding={15} gap={15}>
-                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>User Type</Text>
+                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Contact Type</Text>
                     <SelectList 
                         setSelected={(val) => setSelected(val)} 
                         data={userTypeData} 
