@@ -19,6 +19,7 @@
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-dropdown-select-list": "^2.0.5",
+    "react-native-iconify": "^1.0.2",
     "react-native-image-picker": "^7.1.2",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-modal": "^13.0.1",
