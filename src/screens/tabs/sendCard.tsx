@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Animated, Dimensions, Image, Linking, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
@@ -7,11 +7,17 @@ import { ColumnView } from '../../components/ColumnView';
 import { Box3dPoint, CheckCircle, Circle, Menu, MobileDevMode, MoreHorizCircle, Phone, Play, Send, SendDiagonal, Star, Trophy, XmarkCircle } from 'iconoir-react-native';
 import { GHITextInput } from '../../components/GHITextInput';
 import YouTube from 'react-native-youtube-iframe';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Iconify } from 'react-native-iconify';
+import { useNavigation } from '@react-navigation/native';
+import GHIModal from '../../components/GHIModal';
 
 const { width: screenWidth } = Dimensions.get('screen');
 
 const SendCardScreen = () => {
     const theme = useTheme();
+    const navigation = useNavigation();
+    
     const [sendTo, setSendTo] = useState('Lead');
     const [sendVia, setSendVia] = useState('Text');
     const [includeSocialMedia , setIncludeSocialMedia] = useState(false);
@@ -22,33 +28,38 @@ const SendCardScreen = () => {
 
     const scrollX = useRef(new Animated.Value(0)).current;
     // Overview Property
-    const [playingOverView, setPlayingOverView] = useState(false);
-    const [OpenPlayerOverview, setOpenPlayerOverview] = useState(false);
-    const onStateChangeOverView = useCallback((state: any) => {
+    const [playing, setPlaying] = useState(false);
+    const [OpenPlayer, setOpenPlayer] = useState(false);
+    const onStateChangePlayer= useCallback((state: any) => {
         if (state === 'ended') {
-            setPlayingOverView(false);
+            setPlaying(false);
         }
     }, []);
-
-
+    const [ytID, setYTID] = useState('');
+    const [ytTitle, setYTTitle] = useState('');
 
     const data = [
     {
-        title: 'Item 1',
+        title: 'Door 2 Door',
         image: 'https://via.placeholder.com/300',
         ytid: 'DzO2SBzMmOw',
     },
     {
-        title: 'Item 2',
+        title: 'Be a Champion',
         image: 'https://via.placeholder.com/300',
         ytid: 'DzO2SBzMmOw',
     },
     {
-        title: 'Item 3',
+        title: 'Referral',
         image: 'https://via.placeholder.com/300',
         ytid: 'DzO2SBzMmOw',
     },
     ];
+
+    useEffect( () => {
+        // Load data from local storage
+        preFetchLocalStorage();
+    }, []);
 
     const handleSendVia = () => {
         if (sendVia === 'Text') {
@@ -74,6 +85,94 @@ const SendCardScreen = () => {
                 .catch((err) => console.error('An error occurred', err));
         }
     }
+
+    const preFetchLocalStorage = async () => {
+        try {
+            if (sendTo === 'Lead') {
+                const message = await AsyncStorage.getItem('IMLead');
+                if (message) {
+                    setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+            if (sendTo === 'Customer') {
+                const message = await AsyncStorage.getItem('IMCustomer');
+                if (message) {
+                    setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+            if (sendTo === 'Recruit') {
+                const message = await AsyncStorage.getItem('IMRecruit');
+                if (message) {
+                    setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+        } catch (error) {
+            console.log('preFetchLocalStorage: ', error)
+        }
+    }
+
+    const handleInitialMessageTab = async (value: string) => {
+        console.log("IM tab: ", value)
+        setSendTo(value);
+        try {
+            if (value === 'Lead') {
+                const message = await AsyncStorage.getItem('IMLead');
+                if (message) {
+                    await setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+            if (value === 'Customer') {
+                const message = await AsyncStorage.getItem('IMCustomer');
+                if (message) {
+                    await setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+            if (value === 'Recruit') {
+                const message = await AsyncStorage.getItem('IMRecruit');
+                if (message) {
+                    await setInitialMessage(message);
+                } else {
+                    setInitialMessage('');
+                }
+            }
+        } catch (error) {
+            console.log('Handle Initial Message Tab: ', error);
+        }
+        
+    }
+
+    const handleStoreInitialMessage = async () => {
+        try {
+            if (sendTo === 'Lead') {
+                await AsyncStorage.setItem('IMLead', initialMessage);
+            }
+            if (sendTo === 'Customer') {
+                await AsyncStorage.setItem('IMCustomer', initialMessage);
+            }
+            if (sendTo === 'Recruit') {
+                await AsyncStorage.setItem('IMRecruit', initialMessage);
+            }
+        } catch (error) {
+            console.log('handle Store Initial Message: ', error)
+        }
+    }
+
+    const handleOpenVideo = (id: string, title: string) => {
+        setOpenPlayer(!OpenPlayer)
+        setYTID(id)
+        setYTTitle(title)
+    }
+    
   return (
     <View style={[styles.body, {backgroundColor: theme.primary}]}>
         <ColumnView alignItem='center' paddingVertical={15}>
@@ -127,17 +226,17 @@ const SendCardScreen = () => {
 
                         <RowView justifyContent='center' alignItem='center' gap={15} marginVertical={15}>
                             <TouchableOpacity style={{width: 90,height: 46, justifyContent: 'center', alignItems: 'center', backgroundColor: sendTo === 'Lead' ? theme.primary : '#1111', paddingHorizontal: 10, borderRadius:5}}
-                                    onPress={() => setSendTo('Lead')}
+                                    onPress={() => handleInitialMessageTab('Lead')}
                                 >
                                 <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: sendTo === 'Lead' ? '#fff': '#666666'}}>Lead</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width: 90, height: 46, justifyContent: 'center', alignItems: 'center', backgroundColor: sendTo === 'Customer' ? theme.primary : '#1111', paddingHorizontal: 10, borderRadius:5}}
-                                    onPress={() => setSendTo('Customer')}
+                                    onPress={() => handleInitialMessageTab('Customer')}
                                 >
                                 <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: sendTo === 'Customer' ? '#fff': '#666666'}}>Customer</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width: 90, height: 46, justifyContent: 'center', alignItems: 'center', backgroundColor: sendTo === 'Recruit' ? theme.primary : '#1111', paddingHorizontal: 10, borderRadius:5}}
-                                    onPress={() => setSendTo('Recruit')}
+                                    onPress={() => handleInitialMessageTab('Recruit')}
                                 >
                                 <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: sendTo === 'Recruit' ? '#fff': '#666666'}}>Recruit</Text>
                             </TouchableOpacity>
@@ -151,6 +250,8 @@ const SendCardScreen = () => {
                             textAlignVertical='top'
                             style={{borderWidth: 0.5, borderRadius: 5, padding: 10}}
                             onChangeText={(value) => setInitialMessage(value)}
+                            onEndEditing={() => handleStoreInitialMessage()}
+                            value={initialMessage}
                         />
 
                         <RowView alignItem='center' justifyContent='space-between' marginVertical={15}>
@@ -182,19 +283,37 @@ const SendCardScreen = () => {
                         <ColumnView gap={15} marginBottom={15}>
                             <RowView justifyContent='space-between' alignItem='center'>
                                 <Text>Video Attachement</Text>
-                                <Text>Add Video</Text>
+                                <TouchableOpacity style={{backgroundColor: '#2222',padding: 5, borderRadius: 5}}
+                                        onPress={() => navigation.navigate('AddVideo')}
+                                    >
+                                    <RowView gap={10}>
+                                        <Iconify icon='iconoir:add-media-video' size={20} color={theme.primaryDark}/>
+                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Add Video</Text>
+                                    </RowView>
+                                </TouchableOpacity>
                             </RowView>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <RowView alignItem='flex-start' gap={20}>
                                 { data.map((item, index) => (
-                                    <View key={index} style={{paddingVertical: 15, paddingHorizontal: 15, backgroundColor: '#2222', borderRadius: 10}}>
-                                        <YouTube
-                                            width={300}
-                                            height={170}
-                                            play={playingOverView}
-                                            videoId={item.ytid} // The YouTube video ID
-                                            onChangeState={onStateChangeOverView}
-                                        />
+                                    <View key={index} style={styles.yt}>
+                                        <View style={{justifyContent: 'center', alignItems: 'center', position: 'relative'}}>
+                                            <Image 
+                                                source={{ uri: item.image }}
+                                                width={145}
+                                                height={115}
+                                                style={{position:'absolute', borderRadius: 5}}
+                                            />
+                                            <TouchableOpacity style={{backgroundColor: '#1111',padding: 5, borderRadius: 5}}
+                                                 onPress={() => handleOpenVideo(item.ytid, item.title)}
+                                                >
+                                                <RowView gap={10}>
+                                                    <Iconify icon='solar:play-line-duotone' size={20} color={theme.primaryDark}/>
+                                                </RowView>
+                                            </TouchableOpacity>
+                                            
+                                            
+                                        </View>
+                                        <Text style={{position: 'absolute', bottom: 10, left: 10, maxWidth: 100}}>{item.title}</Text>
                                     </View>
                                 ))}
                                 {/* <Animated.ScrollView
@@ -298,6 +417,15 @@ const SendCardScreen = () => {
                 <View style={{height: 60}}></View>
             </ScrollView>
         </View>
+        <GHIModal title={ytTitle} alignment={'center'} isVisible={OpenPlayer} onClose={ () => setOpenPlayer(!OpenPlayer)}>
+            <YouTube
+                width={280}
+                height={200}
+                play={playing}
+                videoId={'mbnYYqpmmvg'} // The YouTube video ID
+                onChangeState={onStateChangePlayer}
+            />
+        </GHIModal>
     </View>
   )
 }
@@ -313,6 +441,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    yt: {
+        backgroundColor: '#666666',
+        borderRadius: 5,
+        position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 150,
+        height: 120,
+    }
 });
 
 export default SendCardScreen;
