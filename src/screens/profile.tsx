@@ -117,7 +117,9 @@ const ProfileScreen = () => {
             </RowView>
 
             <RowView gap={10} marginTop={15} justifyContent='center'>
-               <TouchableOpacity>
+               <TouchableOpacity 
+                        onPress={() => navigation.navigate('Appointments')}
+                    >
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
                         {/* <Calendar color={theme.primaryDark} width={20} height={20} /> */}
                         <Iconify icon='carbon:calendar' size={20} color={theme.primaryDark}/>
