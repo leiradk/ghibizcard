@@ -22,6 +22,8 @@ import ForgotScreen from './screens/forgot';
 import AllReviewsScreen from './screens/reviews/allReviews';
 import ProfileScreen from './screens/profile';
 import ContactDetailsScreen from './screens/ContactDetails';
+import AddVideoScreen from './screens/addVideo';
+import AppointmentsScreen from './screens/appointments';
 
 
 
@@ -96,6 +98,22 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="ContactDetails" 
                 component={ContactDetailsScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="AddVideo" 
+                component={AddVideoScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="Appointments" 
+                component={AppointmentsScreen}
                 options={
                     
                     { headerShown: false }
