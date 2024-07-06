@@ -3,6 +3,7 @@ export const SET_FIRSTNAME = 'SET_FIRSTNAME';
 export const SET_LASTNAME = 'SET_LASTNAME';
 export const SET_KEEP_LOGGED_IN = 'SET_KEEP_LOGGED_IN';
 export const SET_DARK_LIGHT_MODE = 'SET_DARK_LIGHT_MODE';
+export const SET_INITIAL_MESSAGE_LEAD = 'SET_INITIAL_MESSAGE_LEAD';
 
 // Set Username.
 export const setUsername = (username: string) => (dispatch: (arg0: { type: string; payload: string; }) => void) => {
@@ -41,5 +42,13 @@ export const setDarkLightMode = (mode: String) => (dispatch: (arg0: { type: stri
     dispatch({
         type: SET_DARK_LIGHT_MODE,
         payload: mode,
+    });
+}
+
+// Set Initial Message.
+export const setInitialMessageLead = (initialMessage: String) => (dispatch: (arg0: { type: string; payload: String; }) => void) => {
+    dispatch({
+        type: SET_INITIAL_MESSAGE_LEAD,
+        payload: initialMessage,
     });
 }

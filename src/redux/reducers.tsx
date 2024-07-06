@@ -1,4 +1,9 @@
-import { SET_USERNAME, SET_FIRSTNAME, SET_LASTNAME, SET_KEEP_LOGGED_IN, SET_DARK_LIGHT_MODE } from "./actions";
+import { SET_USERNAME, 
+         SET_FIRSTNAME, 
+         SET_LASTNAME, 
+         SET_KEEP_LOGGED_IN, 
+         SET_DARK_LIGHT_MODE, 
+         SET_INITIAL_MESSAGE_LEAD } from "./actions";
 
 const initialState = {
     username: '',
@@ -6,6 +11,7 @@ const initialState = {
     lastname: '',
     keepLoggedIn: false,
     dlmode: 'light',
+    initialMessageLead: ''
 }
 
 const userReducer = (state = initialState, action: {
@@ -22,6 +28,8 @@ const userReducer = (state = initialState, action: {
             return {...state, keepLoggedIn: action.payload}
         case SET_DARK_LIGHT_MODE:
             return {...state, dlmode: action.payload}
+        case SET_INITIAL_MESSAGE_LEAD:
+            return {...state, initialMessageLead: action.payload}
         default:
             return state;
     }
