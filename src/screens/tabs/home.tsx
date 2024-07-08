@@ -62,13 +62,17 @@ const HomeScreen = () => {
                                     </ColumnView>
                                     <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
                                 </ColumnView>
-                                <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
-                                    <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Iconify icon='carbon:calendar' size={30} color={'#fff'}/>
-                                        {/* <Calendar color={'#fff'} width={30} height={30}  /> */}
+                                <TouchableOpacity 
+                                        onPress={ () => navigation.navigate('Appointments')}
+                                    >
+                                    <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
+                                        <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
+                                            <Iconify icon='carbon:calendar' size={30} color={'#fff'}/>
+                                            {/* <Calendar color={'#fff'} width={30} height={30}  /> */}
+                                        </ColumnView>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
-                                </ColumnView>
+                                </TouchableOpacity>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
                                         <Iconify icon='fluent-mdl2:task-manager-mirrored' size={30} color={'#fff'}/>  

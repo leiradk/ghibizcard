@@ -40,7 +40,7 @@ const SendCardScreen = () => {
 
     const data = [
     {
-        title: 'Door 2 Door',
+        title: 'Company',
         image: 'https://via.placeholder.com/300',
         ytid: 'DzO2SBzMmOw',
     },
@@ -50,7 +50,7 @@ const SendCardScreen = () => {
         ytid: 'DzO2SBzMmOw',
     },
     {
-        title: 'Referral',
+        title: 'Enter a Contest',
         image: 'https://via.placeholder.com/300',
         ytid: 'DzO2SBzMmOw',
     },
@@ -350,24 +350,29 @@ const SendCardScreen = () => {
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 <RowView paddingVertical={15} gap={15}>
                                     <TouchableOpacity 
-                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                            style={styles.CustomCallToAction}
                                         >
-                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Download Champion App</Text>
+                                        <Text style={styles.CustomCallToActionText}>Text me</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity 
-                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                            style={styles.CustomCallToAction}
                                         >
-                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Download GHI+BizCard App</Text>
+                                        <Text style={styles.CustomCallToActionText}>Call me</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity 
-                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                            style={styles.CustomCallToAction}
                                         >
-                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Apply Today!</Text>
+                                        <Text style={styles.CustomCallToActionText}>Email me</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity 
-                                            style={{height: 40, backgroundColor: theme.primary, paddingHorizontal: 15, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
+                                            style={styles.CustomCallToAction}
                                         >
-                                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Submit Documents</Text>
+                                        <Text style={styles.CustomCallToActionText}>Schedule Appointment</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity 
+                                            style={styles.CustomCallToAction}
+                                        >
+                                        <Text style={styles.CustomCallToActionText}>Visit our Website</Text>
                                     </TouchableOpacity>
                                 </RowView>
                             </ScrollView>
@@ -449,6 +454,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 150,
         height: 120,
+    },
+    CustomCallToAction: {
+        height: 40, 
+        backgroundColor: '#fff', 
+        paddingHorizontal: 15, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        borderColor: '#66666620',
+        borderBottomWidth: 2,
+        borderRightWidth: 2, 
+        borderRadius: 20,
+    },
+    CustomCallToActionText: {
+        fontSize: 14, 
+        fontFamily: 'Manrope-Bold', 
+        color: '#224C12'
     }
 });
 
