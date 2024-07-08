@@ -24,6 +24,7 @@ import ProfileScreen from './screens/profile';
 import ContactDetailsScreen from './screens/ContactDetails';
 import AddVideoScreen from './screens/addVideo';
 import AppointmentsScreen from './screens/appointments';
+import AddAppointmentScreen from './screens/addAppointment';
 
 
 
@@ -114,6 +115,14 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="Appointments" 
                 component={AppointmentsScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="AddAppointment" 
+                component={AddAppointmentScreen}
                 options={
                     
                     { headerShown: false }

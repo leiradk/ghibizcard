@@ -25,7 +25,7 @@ const AppointmentsScreen = () => {
         </View>
 
         <TouchableOpacity style={{position: 'absolute', bottom: 15, right: 15}}
-                onPress={() => {}}
+                onPress={() => navigation.navigate('AddAppointment')}
             >
             <RowView backgroundColor={theme.primary} padding={10} borderRadius={40}>
                 <Iconify icon='ph:plus-bold' size={30} color={'#fff'}/>
