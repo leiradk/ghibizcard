@@ -95,6 +95,13 @@ const ContactDetailsScreen = ({route}) => {
         {key:'6', value:'Verbal Commit'},
         {key:'7', value:'Selling'},
         {key:'8', value:'Prospect'},
+        {key:'8', value:'Not Interested'},
+        {key:'8', value:'Go Back'},
+        {key:'8', value:'Call Back'},
+        {key:'8', value:'Not Home'},
+        {key:'8', value:'Set Appointment'},
+        {key:'8', value:'New Contacts'},
+        {key:'8', value:'Sold'},
     ]
 
     const handleSelectExperienced = (value: string) => {
@@ -163,7 +170,7 @@ const ContactDetailsScreen = ({route}) => {
                 <TouchableOpacity>
                     <ColumnView width={60} height={50} padding={5} backgroundColor='#fff' justifyContent='center' alignItem='center' borderRadius={5}>
                         {/* <DownloadCircle color={theme.primaryDark} width={20} height={20} /> */}
-                        <Iconify icon='radix-icons:download' size={20} color={theme.primaryDark}/>
+                        <Iconify icon='solar:link-bold' size={20} color={theme.primaryDark}/>
                         <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: '#666666'}}>Champion</Text>
                     </ColumnView>
                 </TouchableOpacity> 
