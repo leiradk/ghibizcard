@@ -4,7 +4,7 @@ import { RowView } from '../components/RowView';
 import { CircleView } from '../components/CircleView';
 import { useTheme } from '../theme/ThemeContext';
 import { ColumnView } from '../components/ColumnView';
-import { CreditCard, Home, NetworkRight, User} from 'iconoir-react-native';
+import { Bell, CreditCard, Home, NetworkRight, User} from 'iconoir-react-native';
 import { Iconify } from 'react-native-iconify';
 import HomeScreen from './tabs/home';
 import ContactScreen from './tabs/contacts';
@@ -27,9 +27,10 @@ const MainScreen = () => {
             <SendCardScreen />
         )}
         { tabIndex === 3 &&(
-           <RecruitScreen />
+        //    <RecruitScreen />
+            <Text>Activity</Text>
         )}
-        <View style={{width: '100%',position: 'absolute', bottom: 0, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', paddingVertical: 5}}>
+        <View style={styles.bottomNav}>
            <RowView justifyContent='space-evenly' width={'100%'}>
                 <TouchableOpacity
                         onPress={() => setTabIndex(0)}
@@ -60,8 +61,12 @@ const MainScreen = () => {
                         onPress={() => setTabIndex(3)}
                     >
                     <ColumnView alignItem='center'>
-                        <Iconify icon='ph:share-network-light' size={20} color={theme.primaryDark}/>
-                        <Text style={{fontSize: 10, fontFamily: tabIndex === 2 ?  'Manrope-Bold': 'Manrope-Regular'}}>Recruit</Text>
+                        {/* <Iconify icon='lets-icons:bell-pin' size={20} color={theme.primaryDark} strokeWidth={1}/> */}
+                        <Bell width={20} height={20} color={theme.primaryDark} />
+                        <Text style={{fontSize: 10, fontFamily: tabIndex === 2 ?  'Manrope-Bold': 'Manrope-Regular'}}>Activity</Text>
+                        <CircleView diameter={15} backgroundColor={'red'} position='absolute' top={-3} right={3}>
+                            <Text style={{fontSize: 10, fontFamily: 'Manrope-Regular', color: 'white', top: 0, right: 0}}>7</Text>
+                        </CircleView>
                     </ColumnView>
                 </TouchableOpacity>
             </RowView>
@@ -77,6 +82,18 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'relative',
     },
+    bottomNav: {
+        width: '100%',
+        position: 'absolute', 
+        height: 55,
+        bottom: 0, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        backgroundColor: '#fff', 
+        paddingVertical: 5,
+        borderTopColor: '#2222',
+        borderTopWidth: 0.5
+    }
 });
 
 export default MainScreen;

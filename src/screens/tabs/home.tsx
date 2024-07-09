@@ -4,7 +4,7 @@ import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
-import { AppNotification, BellNotification, BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
+import { AppNotification, BellNotification, BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Plus, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Iconify } from 'react-native-iconify';
 
@@ -13,41 +13,43 @@ const HomeScreen = () => {
     const navigation = useNavigation();
   return (
     <View style={styles.body}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <TouchableOpacity style={{position: 'absolute', bottom: 65, right: 15, zIndex: 1}}
+                onPress={() => {}}
+            >
+            <CircleView diameter={46} backgroundColor={theme.primary} >
+                <Plus width={30} height={30} color={'#fff'} />
+            </CircleView>
+        </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#fff"}}>
             <View>
                 <RowView alignItem='center' justifyContent='space-between' backgroundColor={theme.primary} padding={21}>
                     <RowView alignItem='center'>
-                        <CircleView diameter={70} backgroundColor={theme.primaryLight}>
-                            <Text style={{color: '#fff'}}>AD</Text>
+                        <CircleView diameter={60} backgroundColor={'#6666'}>
+                            <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold', color: '#fff'}}>AD</Text>
                         </CircleView>
                         <ColumnView marginLeft={10}>
-                            <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Ariel Delos Santos</Text>
+                            <Text style={{fontSize: 16, fontFamily: 'Manrope-Bold', color: '#fff'}}>Ariel Delos Santos</Text>
                             <RowView alignItem='center'>
-                                <RowView alignItem='center' marginRight={5}>
-                                    <Star color={theme.primaryDark} width={14} height={14} />
-                                    <Text>5.0</Text>
+                                <RowView alignItem='center' marginRight={5} gap={3}>
+                                    <Star color={'#fff'} width={14} height={14} fill={'yellow'} />
+                                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>5.0</Text>
                                 </RowView>
-                                <Text>100 Reviews</Text>
+                                <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>100 Reviews</Text>
                             </RowView>
                         </ColumnView>
                     </RowView>
                     <TouchableOpacity
                             onPress={() => navigation.navigate('Profile')}
                         >
-                        <Iconify icon='lets-icons:bell-pin' size={25} color={theme.primaryDark}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                            onPress={() => navigation.navigate('Profile')}
-                        >
-                        <Menu color={theme.primaryDark} width={25} height={25}  />
+                        <Menu color={'#fff'} width={25} height={25}  />
                     </TouchableOpacity>
                 </RowView>
                 <ColumnView>
                     {/* Dashboard */}
                     <View>
-                        <Text style={{paddingHorizontal: 21, marginTop: 15, fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Dashboard</Text>
+                        {/* <Text style={{paddingHorizontal: 21, marginTop: 15, fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Dashboard</Text> */}
                         <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-                            <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15}>
+                            <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={15}>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
                                         <Iconify icon='tdesign:play-demo' size={30} color={'#fff'}/>
@@ -300,7 +302,7 @@ const HomeScreen = () => {
                     
                 </ColumnView>
             </View>
-            <View style={{height: 50}}></View>
+            <View style={{height: 75}}></View>
         </ScrollView>
     </View>
   )
