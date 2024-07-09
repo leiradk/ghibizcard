@@ -64,6 +64,7 @@ export const ColumnView: FC<RCViewProps> = ({
 const styles = StyleSheet.create({
     body: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        position: 'relative',
     },
 });
