@@ -88,20 +88,20 @@ const ContactDetailsScreen = ({route}) => {
     ]
 
     const statusData = [
-        {key:'1', value:'Signed'},
+        {key:'1', value:'New'},
         {key:'2', value:'Need Docs'},
         {key:'3', value:'Contacted'},
         {key:'4', value:'Onboarding'},
         {key:'6', value:'Verbal Commit'},
         {key:'7', value:'Selling'},
         {key:'8', value:'Prospect'},
-        {key:'8', value:'Not Interested'},
-        {key:'8', value:'Go Back'},
-        {key:'8', value:'Call Back'},
-        {key:'8', value:'Not Home'},
-        {key:'8', value:'Set Appointment'},
-        {key:'8', value:'New Contacts'},
-        {key:'8', value:'Sold'},
+        {key:'9', value:'Not Interested'},
+        {key:'10', value:'Go Back'},
+        {key:'11', value:'Call Back'},
+        {key:'12', value:'Not Home'},
+        {key:'13', value:'Set Appointment'},
+        {key:'14', value:'Signed'},
+        {key:'15', value:'Sold'},
     ]
 
     const handleSelectExperienced = (value: string) => {
