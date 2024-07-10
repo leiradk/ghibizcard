@@ -10,6 +10,7 @@ import HomeScreen from './tabs/home';
 import ContactScreen from './tabs/contacts';
 import SendCardScreen from './tabs/sendCard';
 import RecruitScreen from './tabs/recruit';
+import ActivityScreen from './tabs/activity';
 
 const MainScreen = () => {
     const theme = useTheme();
@@ -28,7 +29,7 @@ const MainScreen = () => {
         )}
         { tabIndex === 3 &&(
         //    <RecruitScreen />
-            <Text>Activity</Text>
+            <ActivityScreen />
         )}
         <View style={styles.bottomNav}>
            <RowView justifyContent='space-evenly' width={'100%'}>
