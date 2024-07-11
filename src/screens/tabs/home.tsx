@@ -14,7 +14,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.body}>
         <TouchableOpacity style={{position: 'absolute', bottom: 65, right: 15, zIndex: 1}}
-                onPress={() => {}}
+                onPress={() => navigation.navigate('AddContact')}
             >
             <CircleView diameter={46} backgroundColor={theme.primary} >
                 <Plus width={30} height={30} color={'#fff'} />
@@ -55,14 +55,18 @@ const HomeScreen = () => {
                                         <Iconify icon='tdesign:play-demo' size={30} color={'#fff'}/>
                                         {/* <MediaVideoList color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
+                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
+                                    </View>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
                                         <Iconify icon='bi:trophy' size={30} color={'#fff'}/>
                                         {/* <Trophy color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
+                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
+                                    </View>
                                 </ColumnView>
                                 <TouchableOpacity 
                                         onPress={ () => navigation.navigate('Appointments')}
@@ -72,7 +76,9 @@ const HomeScreen = () => {
                                             <Iconify icon='carbon:calendar' size={30} color={'#fff'}/>
                                             {/* <Calendar color={'#fff'} width={30} height={30}  /> */}
                                         </ColumnView>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
+                                        <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                            <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Appts</Text>
+                                        </View>
                                     </ColumnView>
                                 </TouchableOpacity>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
@@ -80,14 +86,18 @@ const HomeScreen = () => {
                                         <Iconify icon='fluent-mdl2:task-manager-mirrored' size={30} color={'#fff'}/>  
                                         {/* <BookStack color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Manage Campaign</Text>
+                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Manage Campaign</Text>
+                                    </View>
                                 </ColumnView>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
                                         <Iconify icon='clarity:id-badge-line' size={30} color={'#fff'}/>  
                                         {/* <UserCrown color={'#fff'} width={30} height={30}  /> */}
                                     </ColumnView>
-                                    <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>ID Badge</Text>
+                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>ID Badge</Text>
+                                    </View>
                                 </ColumnView>
                             </RowView>
                             <View style={{width: 10}}></View>
@@ -164,19 +174,19 @@ const HomeScreen = () => {
                             <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={10}>
                                 <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
                                     <ColumnView justifyContent='space-between' alignItem='center' height={50}>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Lead</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 80, maxHeight: 25}}>Leads</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>5</Text>
+                                    </ColumnView>
+                                </ColumnView>
+                                <ColumnView justifyContent='center' alignItem='center' width={110} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
+                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 80, maxHeight: 25}}>Customers</Text>
                                         <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>5</Text>
                                     </ColumnView>
                                 </ColumnView>
                                 <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
                                     <ColumnView justifyContent='space-between' alignItem='center' height={50}>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Customer</Text>
-                                        <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>5</Text>
-                                    </ColumnView>
-                                </ColumnView>
-                                <ColumnView justifyContent='center' alignItem='center' width={100} height={70} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10} paddingHorizontal={15}>
-                                    <ColumnView justifyContent='space-between' alignItem='center' height={50}>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 70, maxHeight: 25}}>Recruit</Text>
+                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Bold', color: theme.primaryDark, maxWidth: 80, maxHeight: 25}}>Recruits</Text>
                                         <Text style={{textAlign: 'center', fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>5</Text>
                                     </ColumnView>
                                 </ColumnView>
