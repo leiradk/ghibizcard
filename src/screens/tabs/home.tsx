@@ -1,25 +1,59 @@
-import React from 'react'
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Clipboard } from 'react-native'
 import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
-import { AppNotification, BellNotification, BookStack, Box3dPoint, Calendar, MediaVideoList, Menu, MoreHorizCircle, Play, Plus, Star, Trophy, UserCrown, XmarkCircle } from 'iconoir-react-native';
+import { Menu, MoreHorizCircle, Plus, Star, XmarkCircle } from 'iconoir-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Iconify } from 'react-native-iconify';
+import GHIModal from '../../components/GHIModal';
+import QRCode from 'react-native-qrcode-svg';
+import { GHITextInput } from '../../components/GHITextInput';
 
 const HomeScreen = () => {
     const theme = useTheme();
     const navigation = useNavigation();
+
+    const [openShare, setOpenShare] = useState(false)
+    const [copyLink, setCopyLink] = useState('https://greenhomeportal.vercel.app')
+    const copyToClipboard = (value: string) => {
+        Clipboard.setString(value);
+    };
   return (
     <View style={styles.body}>
-        <TouchableOpacity style={{position: 'absolute', bottom: 65, right: 15, zIndex: 1}}
-                onPress={() => navigation.navigate('AddContact')}
-            >
-            <CircleView diameter={46} backgroundColor={theme.primary} >
-                <Plus width={30} height={30} color={'#fff'} />
-            </CircleView>
-        </TouchableOpacity>
+        <View style={{position: 'absolute', bottom: 0, right: 0, zIndex: 1}}>
+            <TouchableOpacity style={{position: 'absolute', bottom: 65, right: 15}} 
+                    onPress={() => navigation.navigate('AddContact')}
+                >
+                <CircleView diameter={46} backgroundColor={theme.primary} >
+                    <Plus width={30} height={30} color={'#fff'} />
+                </CircleView>
+            </TouchableOpacity>
+            <View style={{ 
+                            position: 'absolute', 
+                            bottom: 116, 
+                            right: 15, backgroundColor: theme.primaryDark, borderRadius: 5, alignItems: 'flex-end'}}>
+                <RowView padding={10} gap={10} alignItem='center'>
+                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Video</Text>
+                    <CircleView diameter={25} backgroundColor={'#fff'}>
+                        <Iconify icon='iconoir:add-media-video' size={15} color={'#000'}/>
+                    </CircleView>
+                </RowView>
+                <RowView padding={10} gap={10} alignItem='center'>
+                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Attachment</Text>
+                    <CircleView diameter={25} backgroundColor={'#fff'}>
+                        <Iconify icon='clarity:attachment-line' size={15} color={'#000'}/>
+                    </CircleView>
+                </RowView>
+                <RowView padding={10} gap={10} alignItem='center'>
+                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Send Card</Text>
+                    <CircleView diameter={25} backgroundColor={'#fff'}>
+                        <Iconify icon='prime:send' size={15} color={'#000'}/>
+                    </CircleView>
+                </RowView>
+            </View>
+        </View>
         <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#fff"}}>
             <View>
                 <RowView alignItem='center' justifyContent='space-between' backgroundColor={theme.primary} padding={21}>
@@ -38,11 +72,18 @@ const HomeScreen = () => {
                             </RowView>
                         </ColumnView>
                     </RowView>
-                    <TouchableOpacity
-                            onPress={() => navigation.navigate('Profile')}
-                        >
-                        <Menu color={'#fff'} width={25} height={25}  />
-                    </TouchableOpacity>
+                    <RowView alignItem='center' gap={10}>
+                        <TouchableOpacity
+                                onPress={() => navigation.navigate('Profile')}
+                            >
+                            <Menu color={'#fff'} width={25} height={25}  />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                                onPress={() => setOpenShare(!openShare)}
+                            >
+                            <Iconify icon='ri:share-line' size={26} color={'#fff'}/>
+                        </TouchableOpacity>
+                    </RowView>
                 </RowView>
                 <ColumnView>
                     {/* Dashboard */}
@@ -314,6 +355,56 @@ const HomeScreen = () => {
             </View>
             <View style={{height: 75}}></View>
         </ScrollView>
+        <GHIModal 
+            title={'Share Via'} 
+            alignment={'center'} 
+            isVisible={openShare} 
+            onClose={() => setOpenShare(!openShare)}>
+            <ColumnView alignItem='center' justifyContent='center'>
+                <QRCode
+                    value="https://greenhomeportal.vercel.app/login"
+                    logo={require('../../../assets/sample_company_logo.png')}
+                    logoSize={30}
+                    logoBackgroundColor='transparent'
+                    logoBorderRadius={15}
+                    />
+                    <RowView gap={15} marginTop={15}>
+                        <ColumnView alignItem='center' justifyContent='center'>
+                            <CircleView diameter={50} backgroundColor={theme.primary}>
+                                <Iconify icon='bx:message' size={25} color={'#fff'}/>
+                            </CircleView>
+                            <Text>Text</Text>
+                        </ColumnView>
+                        <ColumnView alignItem='center' justifyContent='center'>
+                            <CircleView diameter={50} backgroundColor={'#000'}>
+                                <Iconify icon='iconoir:mail' size={25} color={'#fff'}/>
+                            </CircleView>
+                            <Text>Email</Text>
+                        </ColumnView>
+                    </RowView>
+                    <TouchableOpacity style={styles.moreShareOption}>
+                        <Text>More Share Options </Text>
+                    </TouchableOpacity>
+                    <ColumnView width={'100%'} marginTop={15}>
+                        <Text>Share Link:</Text>
+                        <RowView alignItem='center' justifyContent='space-between'>
+                            <View style={{width: '78%'}}>
+                                <GHITextInput 
+                                    placeholder={''} 
+                                    onChangeText={(value) => {}}
+                                    valueData={copyLink}
+                                    editable={false}
+                                    />
+                            </View>
+                            <TouchableOpacity style={styles.copy}
+                                    onPress={() => copyToClipboard(copyLink)}
+                                >
+                                <Iconify icon='clarity:copy-line' size={25} color={'#000'}/>
+                            </TouchableOpacity>
+                        </RowView>
+                    </ColumnView>
+            </ColumnView>
+        </GHIModal>
     </View>
   )
 }
@@ -324,6 +415,25 @@ const styles = StyleSheet.create({
         width: '100%',
         position: 'relative',
     },
+    moreShareOption: {
+        width: '100%', 
+        height: 46, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 15,
+        borderWidth: 1, 
+        borderColor: '#224C12', 
+        borderRadius: 5
+    },
+    copy: {
+        width: '18%', 
+        height: 46, 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#224C12',
+        borderRadius: 5
+    }
 });
 
 export default HomeScreen;
