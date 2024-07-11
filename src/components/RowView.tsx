@@ -29,7 +29,7 @@ export const RowView: FC<RCViewProps> = ({
                                             paddingTop, 
                                             paddingLeft, 
                                             paddingHorizontal, 
-                                            paddingVertical, backgroundColor, borderRadius, gap, borderWidth}) => {
+                                            paddingVertical, backgroundColor, borderRadius, gap, borderWidth, borderColor}) => {
     const theme = useTheme();
     return (
         <View style={[styles.body,
@@ -39,6 +39,7 @@ export const RowView: FC<RCViewProps> = ({
                 width: width,
                 height: height,
                 backgroundColor: backgroundColor,
+                borderColor: borderColor,
                 borderWidth: borderWidth,
                 borderRadius: borderRadius,
                 gap: gap,

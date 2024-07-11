@@ -25,4 +25,5 @@ export interface RCViewProps {
     borderRadius?: AnimatableNumericValue;
     gap?: number;
     borderWidth?: number;
+    borderColor?: string;
 }
