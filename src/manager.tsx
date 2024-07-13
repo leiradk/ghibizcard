@@ -26,6 +26,9 @@ import AddVideoScreen from './screens/addVideo';
 import AppointmentsScreen from './screens/appointments';
 import AddAppointmentScreen from './screens/addAppointment';
 import AddContactScreen from './screens/addContact';
+import SettingsScreen from './screens/settings';
+import TrainingScreen from './screens/training';
+import MapScreen from './screens/Map';
 
 
 
@@ -98,6 +101,14 @@ const NavigatorManager = () => {
                 }
                 />
                 <Stack.Screen 
+                name="Settings" 
+                component={SettingsScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
                 name="ContactDetails" 
                 component={ContactDetailsScreen}
                 options={
@@ -132,6 +143,22 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="AddContact" 
                 component={AddContactScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="Training" 
+                component={TrainingScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="Map" 
+                component={MapScreen}
                 options={
                     
                     { headerShown: false }
