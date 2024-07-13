@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useRef } from 'react'
-import { Dimensions, Image, ScrollView, StyleSheet, Text, Animated , TouchableOpacity, View, TextInput } from 'react-native'
+import { Dimensions, Image, ScrollView, StyleSheet, Text, Animated , TouchableOpacity, View, TextInput, Switch } from 'react-native'
 import { RowView } from '../components/RowView';
 import { CircleView } from '../components/CircleView';
 import { useTheme } from '../theme/ThemeContext';
@@ -10,6 +10,7 @@ import YouTube from 'react-native-youtube-iframe';
 import { useNavigation } from '@react-navigation/native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import { Iconify } from 'react-native-iconify';
+import { setEnabled } from 'react-native/Libraries/Performance/Systrace';
 
 const { width: screenWidth } = Dimensions.get('window');
 const data = [
@@ -30,11 +31,12 @@ const data = [
     },
   ];
 
-const ProfileScreen = () => {
+const SettingsScreen = () => {
     const theme = useTheme();
     const navigation = useNavigation();
     const scrollX = useRef(new Animated.Value(0)).current;
     const [selected, setSelected] = useState("");
+    const [isEnabled, setIsEnabled] = useState(false);
 
     // Overview Property
     const [playingOverView, setPlayingOverView] = useState(false);
@@ -89,6 +91,158 @@ const ProfileScreen = () => {
                 <ArrowLeft color={'#fff'} width={20} height={20} />
             </TouchableOpacity>
         </View>
+        <View style={styles.content}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <ColumnView>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Add your FB Pixel Key</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Show Screen Touch</Text>
+                            <Switch
+                                trackColor={{false: '#767577', true: '#81b0ff'}}
+                                thumbColor={isEnabled ? theme.primary : '#f4f3f4'}
+                                ios_backgroundColor="#3e3e3e"
+                                onValueChange={() => setIsEnabled(!isEnabled)}
+                                value={isEnabled}
+                            />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Notification</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Show Caller ID</Text>
+                            <Switch
+                                trackColor={{false: '#767577', true: '#81b0ff'}}
+                                thumbColor={isEnabled ? theme.primary : '#f4f3f4'}
+                                ios_backgroundColor="#3e3e3e"
+                                onValueChange={() => setIsEnabled(!isEnabled)}
+                                value={isEnabled}
+                            />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Auto Location</Text>
+                            <Switch
+                                trackColor={{false: '#767577', true: '#81b0ff'}}
+                                thumbColor={isEnabled ? theme.primary : '#f4f3f4'}
+                                ios_backgroundColor="#3e3e3e"
+                                onValueChange={() => setIsEnabled(!isEnabled)}
+                                value={isEnabled}
+                            />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Share Messages</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Calendar Settings</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Send Feed Back = FREE SWAG</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Contact Us/Follow Us</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Help Center</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Report Abuse</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Legal</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Change Password</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Payment Methods</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Switch Account</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                            onPress={() => {}}
+                        >
+                        <RowView justifyContent='space-between'>
+                            <Text>Logout</Text>
+                            <NavArrowRight color={'#000'} width={20} height={20} />
+                        </RowView>
+                    </TouchableOpacity>
+                </ColumnView>
+            </ScrollView>
+        </View>
     </View>
   )
 }
@@ -99,6 +253,19 @@ const styles = StyleSheet.create({
         width: '100%',
         position: 'relative',
     },
+    content: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingHorizontal: 15,
+        marginTop: 15,
+        paddingTop: 15
+    },
+    button: {
+        borderColor: '#66666650', 
+        borderBottomWidth: 0.5, 
+        paddingVertical: 10,
+        marginVertical: 5
+    }
 });
 
-export default ProfileScreen;
+export default SettingsScreen;
