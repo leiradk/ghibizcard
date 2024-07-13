@@ -4,7 +4,7 @@ import { RowView } from '../../components/RowView';
 import { CircleView } from '../../components/CircleView';
 import { useTheme } from '../../theme/ThemeContext';
 import { ColumnView } from '../../components/ColumnView';
-import { Menu, MoreHorizCircle, Plus, Star, XmarkCircle } from 'iconoir-react-native';
+import { Menu, MoreHorizCircle, Plus, Settings, Star, Xmark, XmarkCircle } from 'iconoir-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Iconify } from 'react-native-iconify';
 import GHIModal from '../../components/GHIModal';
@@ -20,39 +20,61 @@ const HomeScreen = () => {
     const copyToClipboard = (value: string) => {
         Clipboard.setString(value);
     };
+    
+    const [addMore, setAddMore] = useState(false);
+
   return (
     <View style={styles.body}>
         <View style={{position: 'absolute', bottom: 0, right: 0, zIndex: 1}}>
             <TouchableOpacity style={{position: 'absolute', bottom: 65, right: 15}} 
-                    onPress={() => navigation.navigate('AddContact')}
+                    onPress={() => setAddMore(!addMore)}
                 >
                 <CircleView diameter={46} backgroundColor={theme.primary} >
-                    <Plus width={30} height={30} color={'#fff'} />
+                    {addMore ? (
+                        <Xmark width={30} height={30} color={'#fff'} />
+                    ): (
+                        <Plus width={30} height={30} color={'#fff'} />
+                    )}
                 </CircleView>
             </TouchableOpacity>
-            <View style={{ 
+            <TouchableOpacity style={{position: 'absolute', bottom: 120, right: 15}} 
+                    onPress={() => {}}
+                >
+                <CircleView diameter={46} backgroundColor={theme.primary} >
+                    <Iconify icon='prime:map' size={30} color={'#fff'} />
+                </CircleView>
+            </TouchableOpacity>
+            { addMore &&(
+                <View style={{ 
                             position: 'absolute', 
                             bottom: 116, 
                             right: 15, backgroundColor: theme.primaryDark, borderRadius: 5, alignItems: 'flex-end'}}>
-                <RowView padding={10} gap={10} alignItem='center'>
-                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Video</Text>
-                    <CircleView diameter={25} backgroundColor={'#fff'}>
-                        <Iconify icon='iconoir:add-media-video' size={15} color={'#000'}/>
-                    </CircleView>
-                </RowView>
-                <RowView padding={10} gap={10} alignItem='center'>
-                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Attachment</Text>
-                    <CircleView diameter={25} backgroundColor={'#fff'}>
-                        <Iconify icon='clarity:attachment-line' size={15} color={'#000'}/>
-                    </CircleView>
-                </RowView>
-                <RowView padding={10} gap={10} alignItem='center'>
-                    <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Send Card</Text>
-                    <CircleView diameter={25} backgroundColor={'#fff'}>
-                        <Iconify icon='prime:send' size={15} color={'#000'}/>
-                    </CircleView>
-                </RowView>
-            </View>
+                    <TouchableOpacity
+                            onPress={() => navigation.navigate('AddVideo')}
+                        >
+                        <RowView padding={10} gap={10} alignItem='center'>
+                            <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Video</Text>
+                            <CircleView diameter={25} backgroundColor={'#fff'}>
+                                <Iconify icon='iconoir:add-media-video' size={15} color={'#000'}/>
+                            </CircleView>
+                        </RowView>
+                    </TouchableOpacity>
+                    
+                    <RowView padding={10} gap={10} alignItem='center'>
+                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Add Attachment</Text>
+                        <CircleView diameter={25} backgroundColor={'#fff'}>
+                            <Iconify icon='clarity:attachment-line' size={15} color={'#000'}/>
+                        </CircleView>
+                    </RowView>
+                    <RowView padding={10} gap={10} alignItem='center'>
+                        <Text style={{fontSize: 14, fontFamily: 'Manrope-Regular', color: '#fff'}}>Send Card</Text>
+                        <CircleView diameter={25} backgroundColor={'#fff'}>
+                            <Iconify icon='prime:send' size={15} color={'#000'}/>
+                        </CircleView>
+                    </RowView>
+                </View>
+            )}
+            
         </View>
         <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#fff"}}>
             <View>
@@ -74,9 +96,9 @@ const HomeScreen = () => {
                     </RowView>
                     <RowView alignItem='center' gap={10}>
                         <TouchableOpacity
-                                onPress={() => navigation.navigate('Profile')}
+                                onPress={() => navigation.navigate('Settings')}
                             >
-                            <Menu color={'#fff'} width={25} height={25}  />
+                            <Settings color={'#fff'} width={25} height={25}  />
                         </TouchableOpacity>
                         <TouchableOpacity
                                 onPress={() => setOpenShare(!openShare)}
@@ -91,15 +113,19 @@ const HomeScreen = () => {
                         {/* <Text style={{paddingHorizontal: 21, marginTop: 15, fontSize: 18, fontFamily: 'Manrope-Bold', color: theme.primaryDark}}>Dashboard</Text> */}
                         <ScrollView showsHorizontalScrollIndicator={false} horizontal>
                             <RowView alignItem='center' paddingHorizontal={21} paddingVertical={10} gap={15} marginTop={15}>
-                                <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
-                                    <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Iconify icon='tdesign:play-demo' size={30} color={'#fff'}/>
-                                        {/* <MediaVideoList color={'#fff'} width={30} height={30}  /> */}
+                                <TouchableOpacity
+                                        onPress={() => navigation.navigate('Training')} 
+                                    >
+                                    <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
+                                        <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
+                                            <Iconify icon='tdesign:play-demo' size={30} color={'#fff'}/>
+                                            {/* <MediaVideoList color={'#fff'} width={30} height={30}  /> */}
+                                        </ColumnView>
+                                        <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                            <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
+                                        </View>
                                     </ColumnView>
-                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Training</Text>
-                                    </View>
-                                </ColumnView>
+                                </TouchableOpacity>
                                 <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
                                     <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
                                         <Iconify icon='bi:trophy' size={30} color={'#fff'}/>
