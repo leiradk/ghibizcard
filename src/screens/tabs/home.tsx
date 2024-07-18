@@ -126,15 +126,19 @@ const HomeScreen = () => {
                                         </View>
                                     </ColumnView>
                                 </TouchableOpacity>
-                                <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
-                                    <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
-                                        <Iconify icon='bi:trophy' size={30} color={'#fff'}/>
-                                        {/* <Trophy color={'#fff'} width={30} height={30}  /> */}
+                                <TouchableOpacity
+                                        onPress={() => navigation.navigate('LeaderBoard')}
+                                    >                                
+                                    <ColumnView justifyContent='space-between' alignItem='center' width={80} height={130} borderWidth={0.2} borderRadius={5} gap={15} paddingVertical={10}>
+                                        <ColumnView padding={5} backgroundColor={theme.primary} borderRadius={5}>
+                                            <Iconify icon='bi:trophy' size={30} color={'#fff'}/>
+                                            {/* <Trophy color={'#fff'} width={30} height={30}  /> */}
+                                        </ColumnView>
+                                        <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
+                                            <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
+                                        </View>
                                     </ColumnView>
-                                    <View style={{height: 50, justifyContent: 'flex-start', alignItems: 'center'}}>
-                                        <Text style={{textAlign: 'center', fontSize: 14, fontFamily: 'Manrope-Regular', color: theme.primaryDark}}>Leader Board</Text>
-                                    </View>
-                                </ColumnView>
+                                </TouchableOpacity>
                                 <TouchableOpacity 
                                         onPress={ () => navigation.navigate('Appointments')}
                                     >

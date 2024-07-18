@@ -29,6 +29,7 @@ import AddContactScreen from './screens/addContact';
 import SettingsScreen from './screens/settings';
 import TrainingScreen from './screens/training';
 import MapScreen from './screens/Map';
+import LeaderBoardScreen from './screens/leaderBoard';
 
 
 
@@ -159,6 +160,14 @@ const NavigatorManager = () => {
                 <Stack.Screen 
                 name="Map" 
                 component={MapScreen}
+                options={
+                    
+                    { headerShown: false }
+                }
+                />
+                <Stack.Screen 
+                name="LeaderBoard" 
+                component={LeaderBoardScreen}
                 options={
                     
                     { headerShown: false }
